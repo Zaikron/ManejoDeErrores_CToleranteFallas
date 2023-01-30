@@ -20,3 +20,27 @@
 <p align="center"> <img src="https://github.com/Zaikron/ManejoDeErrores_CToleranteFallas/blob/main/Imagenes/c4.PNG"/> </p>
 <p align="center"> <img src="https://github.com/Zaikron/ManejoDeErrores_CToleranteFallas/blob/main/Imagenes/c5.PNG"/> </p>
 
+        void seleccionarImagen()
+        {
+            OpenFileDialog opF = new OpenFileDialog();
+            try
+            {
+                if (opF.ShowDialog() == DialogResult.OK)
+                {
+                    rutaImagen = opF.FileName;
+                    imagen_PBox.Image = Image.FromFile(rutaImagen);
+                }
+            }
+            catch (Exception ex)
+            {
+                txtImg.Text = "El archivo no es una imagen: ";
+                txtImg.Text += ex.Message.ToString();
+            }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            txtImg.Text = " ";
+            seleccionarImagen();
+        }
+    
